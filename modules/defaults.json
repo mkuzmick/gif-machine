@@ -1,5 +1,18 @@
 {
   "width": 640,
   "height": 360,
-  "ffmpegPath": "ffmpeg"
+  "ffmpegPath": "ffmpeg",
+  "keepPalette": true,
+  "html": true,
+  "inputFile": false,
+  "configOptions": [
+    "width",
+    "height",
+    "ffmpegPath",
+    "outputFolder",
+    "outputFilePath",
+    "framerate",
+    "html",
+    "keepPalette"
+  ]
 }

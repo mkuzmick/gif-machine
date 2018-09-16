@@ -3,10 +3,10 @@ const chalk = require('chalk');
 
 var makeTheGif = require('./modules/gif-maker').makeTheGif;
 
-const makeGif = async function (yargs) {
-  console.log("yargs are: ");
-  console.log(chalk.magenta(JSON.stringify(yargs, null, 4)));
-  makeTheGif({test: 1, again: 2})
+const makeGif = async function (settings) {
+  console.log("settings are: ");
+  console.log(chalk.magenta(JSON.stringify(settings)));
+  makeTheGif(settings)
 }
 
 module.exports.makeGif = makeGif;
