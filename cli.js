@@ -14,5 +14,5 @@ if (yargs.config) {
   console.log("Performing a job with the following settings:");
   cliTools.printJson(jobSettings);
   gifMachine.makeGif(jobSettings)
-    .then(()=>console.log("done we hope"));
+    .then(()=>console.log("done."));
 }

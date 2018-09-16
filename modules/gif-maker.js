@@ -4,7 +4,7 @@ var path = require('path');
 var makeHtml = require('./makeHtml');
 
 module.exports.makeTheGif = function(settings){
-  console.log("these are the arguments hitting makeTheGif " + JSON.stringify(settings));
+  // console.log("these are the arguments hitting makeTheGif " + JSON.stringify(settings));
   var filePath;
   if (settings.inputFile) {
     filePath = settings.inputFile;
@@ -26,9 +26,8 @@ module.exports.makeTheGif = function(settings){
   cp.spawnSync(settings.ffmpegPath, ['-i', filePath, '-i',
     palettePath, '-vf', ('scale=' + settings.width + ":"
     + settings.height), '-y', gifPath]);
-  fse.writeFileSync(htmlPath, makeHtml(gifPath, palettePath), 'utf-8');
-  cp.spawnSync('open', [htmlPath]);
-  if (settings.slack==true) {
-
+  if (settings.html) {
+    fse.writeFileSync(htmlPath, makeHtml(gifPath, palettePath), 'utf-8');
+    cp.spawnSync('open', [htmlPath]);
   }
 };
