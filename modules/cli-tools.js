@@ -38,7 +38,12 @@ exports.printJson = function(obj){
 exports.setConfig = function(yargs, defaults){
   for (var i = 0; i < defaults.configOptions.length; i++) {
     if (yargs[defaults.configOptions[i]]) {
-      conf.set(defaults.configOptions[i], yargs[defaults.configOptions[i]])
+      if (yargs[defaults.configOptions[i]]=="delete") {
+        console.log("found a delete request for " + defaults.configOptions[i]);
+        conf.delete(defaults.configOptions[i]);
+      } else {
+        conf.set(defaults.configOptions[i], yargs[defaults.configOptions[i]])
+      }
     }
   };
   console.log("set your configuration to");

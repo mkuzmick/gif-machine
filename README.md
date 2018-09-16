@@ -36,6 +36,15 @@ This will generate a gif, hold on to the palette file, and open up a nice little
 ## configure
 If you're using the cli, it definitely makes sense to set some defaults so that you can just type `gif /path/to/my/file` (or add this as a service on your mac so you can right-click or click a shortcut key for it).  Accomplish this by entering
 ```
+gif --config --width 480 --height 270 --html false
+```
+or
+```
 gif --config --width=480 --height=270 --html=false
 ```
 and so on.  This will use [configstore](https://www.npmjs.com/package/configstore) to hang on to your config variables in `~/.config/configstore/gif-machine.json`.
+If you ever want to delete a config setting, just enter
+```
+gif --config --width delete --folderPath=delete
+```
+etc.

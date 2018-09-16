@@ -11,6 +11,9 @@ module.exports.makeTheGif = function(settings){
   } else {
     filePath = settings._[0]
   }
+  if (!settings.outputFolder) {
+    settings.outputFolder=path.dirname(filePath)
+  };
   var palettePath = path.join(settings.outputFolder,
     (path.basename(filePath) + "_palette.png"));
   var gifPath = path.join(settings.outputFolder,
