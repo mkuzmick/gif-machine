@@ -1,6 +1,6 @@
 {
   "name": "gif-machine",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "simple ffmpeg-powered gif maker",
   "main": "index.js",
   "bin": {
