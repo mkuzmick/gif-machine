@@ -16,7 +16,7 @@ And use it like this:
 ```
 var gifMachine = require('gif-machine');
 
-gifMachine.makeTheGif({
+gifMachine.makeGif({
   inputFile: '/path/to/my/videoclip',
   width: 960, // optional, default = 640
   height: 540, // optional, default = 360

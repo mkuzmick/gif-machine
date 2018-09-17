@@ -7,14 +7,21 @@ var source = `
       text-align: center;
       font-size: 100px;
       font-weight: 900;
+      font-family: "Avenir Next";
+      margin-bottom: 0px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 500;
       font-family: "Avenir Next"
     }
     .gif-wrap {
       margin:auto;
-      width: 60%;
+      width: 640px;
     }
 
     .img {
+      display: block;
       margin: auto
     }
     .palette {
@@ -31,9 +38,14 @@ var source = `
       <h1>gifMachine</h1>
     </div>
     <div class="gif-wrap">
-      <p>Output: your gif = {{gif}}.</p>
       <img class='gif' src='{{gif}}'></img>
-      <p>Your palette = {{palette}}.</p>
+      <h2>input</h2>
+      <pre>{{input}}</pre>
+      <h2>output</h2>
+      <p>path to gif:</p>
+      <a href={{gif}}><pre>{{gif}}</pre></a>
+      <p>path to palette: = .</p>
+      <pre>{{palette}}</pre>
       <img class='palette' src='{{palette}}'></img>
       <p>Delete them if you wish, but then this page won't work.</p>
     </div>
@@ -42,14 +54,12 @@ var source = `
 
 var template = handlebars.compile(source);
 
-function makeHtml(gif, palette){
+function makeHtml(gif, palette, input){
   var result = template({
     gif: gif,
     palette: palette,
-    gifLink: querystring.escape(gif),
-    paletteLink: querystring.escape(palette)
+    input: input
   });
-  console.log(result);
   return result
 }
 

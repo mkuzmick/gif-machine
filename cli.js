@@ -12,7 +12,8 @@ if (yargs.config) {
 } else {
   var jobSettings = cliTools.mergeSettings(yargs, defaults);
   console.log("Performing a job with the following settings:");
-  cliTools.printJson(jobSettings);
+  // cliTools.printJson(jobSettings);
+  console.log(JSON.stringify(jobSettings));
   gifMachine.makeGif(jobSettings)
     .then(()=>console.log("done."));
 }

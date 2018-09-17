@@ -41,6 +41,12 @@ exports.setConfig = function(yargs, defaults){
       if (yargs[defaults.configOptions[i]]=="delete") {
         console.log("found a delete request for " + defaults.configOptions[i]);
         conf.delete(defaults.configOptions[i]);
+      } else if (yargs[defaults.configOptions[i]]=="false") {
+        console.log("found a false request for " + defaults.configOptions[i]);
+        conf.set(defaults.configOptions[i], false);
+      } else if (yargs[defaults.configOptions[i]]=="true") {
+        console.log("found a true request for " + defaults.configOptions[i]);
+        conf.set(defaults.configOptions[i], true);
       } else {
         conf.set(defaults.configOptions[i], yargs[defaults.configOptions[i]])
       }
