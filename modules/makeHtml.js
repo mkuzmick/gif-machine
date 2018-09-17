@@ -1,8 +1,10 @@
 const handlebars = require('handlebars');
+const querystring = require('querystring');
 
 var source = `
   <style>
     h1 {
+      text-align: center;
       font-size: 100px;
       font-weight: 900;
       font-family: "Avenir Next"
@@ -15,7 +17,6 @@ var source = `
     .img {
       margin: auto
     }
-
     .palette {
       width: 100%;
       image-rendering: optimizeSpeed;
@@ -26,12 +27,14 @@ var source = `
     }
   </style>
   <body>
-    <h1>gifMachine</h1>
+    <div class="title">
+      <h1>gifMachine</h1>
+    </div>
     <div class="gif-wrap">
       <p>Output: your gif = {{gif}}.</p>
-      <img class='gif' src={{gif}}></img>
+      <img class='gif' src='{{gif}}'></img>
       <p>Your palette = {{palette}}.</p>
-      <img class='palette' src={{palette}}></img>
+      <img class='palette' src='{{palette}}'></img>
       <p>Delete them if you wish, but then this page won't work.</p>
     </div>
   </body>
@@ -42,7 +45,9 @@ var template = handlebars.compile(source);
 function makeHtml(gif, palette){
   var result = template({
     gif: gif,
-    palette: palette
+    palette: palette,
+    gifLink: querystring.escape(gif),
+    paletteLink: querystring.escape(palette)
   });
   console.log(result);
   return result

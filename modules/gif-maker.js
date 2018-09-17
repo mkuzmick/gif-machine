@@ -14,13 +14,14 @@ module.exports.makeTheGif = function(settings){
   if (!settings.outputFolder) {
     settings.outputFolder=path.dirname(filePath)
   };
+  var gifBasename = path.basename(filePath, path.extname(filePath));
   var palettePath = path.join(settings.outputFolder,
-    (path.basename(filePath) + "_palette.png"));
+    (gifBasename + "_palette.png"));
   var gifPath = path.join(settings.outputFolder,
-    (path.basename(filePath) + '_' + settings.height
+    (gifBasename + '_' + settings.height
     + ".gif"));
   var htmlPath = path.join(settings.outputFolder,
-    (path.basename(filePath) + "_index.html"));
+    (gifBasename + "_index.html"));
   cp.spawnSync(settings.ffmpegPath, ['-i', filePath, '-vf',
     'palettegen', palettePath]);
   cp.spawnSync(settings.ffmpegPath, ['-i', filePath, '-i',
@@ -30,4 +31,5 @@ module.exports.makeTheGif = function(settings){
     fse.writeFileSync(htmlPath, makeHtml(gifPath, palettePath), 'utf-8');
     cp.spawnSync('open', [htmlPath]);
   }
+  console.log("htmlPath: " + htmlPath);
 };
